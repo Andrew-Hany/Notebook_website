@@ -7,14 +7,7 @@ import matplotlib.pyplot as plt
 from css import *
 from cell import cell_component
 
-# Run CSS
-css()
 
-# Initialize session state for cells and shared global state
-if "cells" not in st.session_state:
-    st.session_state.cells = [{"code": "", "output": "", "plot": None}]
-if "shared_globals" not in st.session_state:
-    st.session_state.shared_globals = {}
 
 def main():
     if "selected_problem" not in st.session_state:
