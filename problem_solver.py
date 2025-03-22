@@ -7,7 +7,12 @@ import json
 import inspect
 from css import *
 from cell import cell_component
+import random
+import numpy as np
 
+# Set the seed for random and numpy
+random.seed(42)
+np.random.seed(42)
 def main():
     if "solution_flag" not in st.session_state:
         st.session_state.solution_flag = 0
@@ -75,19 +80,29 @@ def test(test_cases):
     if st.button("✅ Run Tests", key="run_tests"):
         try:
             exec(user_solution_code, st.session_state.shared_globals)
+            exec(st.session_state.selected_problem["right_solution"], st.session_state.shared_globals)
             func = st.session_state.shared_globals.get("solution")
-            
+            solition_func = st.session_state.shared_globals.get("right_solution")
+
             for case in test_cases:
-                print(func(case["input"]))
-                print(case)
+                # print(func(case["input"]), solition_func(case["input"]))
+                # print(func(case["input"]))
+                # print(case)
                 try:
                     # Assuming the user-defined function is named 'solution'
                     func = st.session_state.shared_globals.get("solution")
-                    print(func(case["input"]))
+                    solition_func = st.session_state.shared_globals.get("right_solution")
+                    # print(func(case["input"]))
                     if func:
+                        random.seed(42)
+                        np.random.seed(42)
                         result = func(*case["input"]) if isinstance(case["input"], list) else func(case["input"])
-                        print(result)
-                        if result == case["expected_output"]:
+
+                        random.seed(42)
+                        np.random.seed(42)
+                        right_result = solition_func(*case["input"]) if isinstance(case["input"], list) else solition_func(case["input"])
+                        print(result, right_result)
+                        if result == right_result:
                             passed += 1
                             results.append((case, "Passed"))
                         else:
