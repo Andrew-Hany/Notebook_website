@@ -11,11 +11,7 @@ from css import *
 # Run CSS
 css()
 
-# Initialize session state for cells and shared global state
-if "cells" not in st.session_state:
-    st.session_state.cells = [{"code": "", "output": "", "plot": None}]
-if "shared_globals" not in st.session_state:
-    st.session_state.shared_globals = {}
+
 def load_problems():
     with open('problems.json', 'r') as f:
         return json.load(f)

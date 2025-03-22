@@ -13,7 +13,10 @@ def main():
     if "selected_problem" not in st.session_state:
         st.error("No problem selected. Please go back to the home page and select a problem.")
         return
-
+    if  "cells" not in st.session_state:
+        st.session_state.cells = [{"code": "", "output": "", "plot": None}]
+    if "shared_globals" not in st.session_state:
+        st.session_state.shared_globals = {}
     problem = st.session_state.selected_problem
 
     st.title(problem["name"])
