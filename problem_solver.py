@@ -3,16 +3,21 @@ import sys
 import io
 import subprocess
 import matplotlib.pyplot as plt
-
+import json
+import inspect
 from css import *
 from cell import cell_component
 
-
-
 def main():
+    if "solution_flag" not in st.session_state:
+        st.session_state.solution_flag = 0
+    if "sub_page" not in st.session_state:
+        st.session_state.sub_page = "notebook"
     if "selected_problem" not in st.session_state:
         st.error("No problem selected. Please go back to the home page and select a problem.")
         return
+    # if solution_flag in st.session_state:
+
     if  "cells" not in st.session_state:
         st.session_state.cells = [{"code": "", "output": "", "plot": None}]
     if "shared_globals" not in st.session_state:
@@ -25,18 +30,92 @@ def main():
     st.sidebar.header("Problem Description")
     st.sidebar.markdown(problem["description"])
 
+    if st.session_state.solution_flag == 1:
+        st.header("Solution")
+        st.code(problem["right_solution"])
+    elif st.session_state.sub_page == "notebook":
+        Notebook()
+        if st.sidebar.button("🔍 Run Tests", key="run_test_page"):
+            st.session_state.sub_page = "testing"
+            st.rerun()
+    elif st.session_state.sub_page == "testing":
+        passed, failed, results = test( problem["test_cases"])
+
+        if failed> 0:
+            st.error(f"Passed: {passed}, Failed: {failed}")
+            # st.sidebar.error(f"Passed: {passed}, Failed: {failed}")    
+        elif passed == len(problem["test_cases"]):
+            st.success(f"Passed: {passed}, Failed: {failed}")
+            # st.sidebar.success("All tests passed!")
+
+        if st.sidebar.button("📝 Notebook", key="notebook"):
+            st.session_state.sub_page = "notebook"
+            st.rerun()
+            
+        
+
     if st.sidebar.button("🔙 Go Back", key="go_back"):
         del st.session_state.selected_problem
-        st.rerun()
-    
+        del st.session_state.solution_flag
+        del st.session_state.cells
+        del st.session_state.shared_globals
 
+        st.rerun()
+                
+def test(test_cases):
+    if 'user_solution' not in st.session_state:
+        st.session_state.user_solution = st.session_state.selected_problem["starting_code"]
+
+    user_solution_code = cell_component(st.session_state.user_solution, 'user_solution')
+
+    passed = 0
+    failed = 0
+    results = []
+
+    if st.button("✅ Run Tests", key="run_tests"):
+        try:
+            exec(user_solution_code, st.session_state.shared_globals)
+            func = st.session_state.shared_globals.get("solution")
+            
+            for case in test_cases:
+                print(func(case["input"]))
+                print(case)
+                try:
+                    # Assuming the user-defined function is named 'solution'
+                    func = st.session_state.shared_globals.get("solution")
+                    print(func(case["input"]))
+                    if func:
+                        result = func(*case["input"]) if isinstance(case["input"], list) else func(case["input"])
+                        print(result)
+                        if result == case["expected_output"]:
+                            passed += 1
+                            results.append((case, "Passed"))
+                        else:
+                            failed += 1
+                            results.append((case, "Failed"))
+                    else:
+                        st.error("No function named 'solution' found in the provided code.")
+                        break
+                except Exception as e:
+                    failed += 1
+                    results.append((case, f"Error: {str(e)}"))
+        except Exception as e:
+            st.error(f"Error executing user solution: {str(e)}")
+
+    return passed, failed, results
+def Notebook():
     # Render all cells
     for idx, cell in enumerate(st.session_state.cells):
         with st.container():
             col1, col2 = st.columns([0.95, 0.05])
 
             with col1:
-                cell_code = cell_component(idx)
+                # Create a unique key for the text area
+                text_area_key = f"code_{idx}"
+                
+                # Retrieve the current value of the text area (if it exists)
+                user_code = st.session_state.cells[idx]['code']
+                cell_code = cell_component(user_code, text_area_key)
 
             with col2:
                 if st.button("▶️", key=f"run_{idx}", help="Run this cell"):

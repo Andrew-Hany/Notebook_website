@@ -37,8 +37,10 @@ def main():
                     st.rerun()
 
             with col2:
-                st.button("Solution", key=f'solution_{problem["id"]}')
-                    # st.session_state.selected_problem = problem
+                if st.button("Solution", key=f'solution_{problem["id"]}'):
+                    st.session_state.selected_problem = problem
+                    st.session_state.solution_flag = 1
+                    st.rerun()
 
                     # st.rerun()
 

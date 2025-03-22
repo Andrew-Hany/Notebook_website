@@ -1,7 +1,7 @@
 import streamlit as st
 import streamlit.components.v1 as components
 
-def cell_component(idx):
+def cell_component(user_code: str, text_area_key: str) -> str:
     """
     Renders an interactive text area that dynamically adjusts its height in real time
     as the user types. The height increases automatically when the user adds new lines.
@@ -12,12 +12,7 @@ def cell_component(idx):
     Returns:
         str: The user-inputted code from the text area.
     """
-    # Create a unique key for the text area
-    text_area_key = f"code_{idx}"
-    
-    # Retrieve the current value of the text area (if it exists)
-    user_code = st.session_state.cells[idx]['code']
-    # print(user_code)
+
     
     # Dynamically calculate the height based on the number of lines in the input
     num_lines = user_code.count("\n") + 1  # Count the number of lines
