@@ -17,11 +17,11 @@ def cell_component(idx):
     
     # Retrieve the current value of the text area (if it exists)
     user_code = st.session_state.cells[idx]['code']
-    print(user_code)
+    # print(user_code)
     
     # Dynamically calculate the height based on the number of lines in the input
     num_lines = user_code.count("\n") + 1  # Count the number of lines
-    print(user_code, num_lines)
+    # print(user_code, num_lines)
     dynamic_height = max(68, num_lines * 30)  # Adjust height (min 100px, 20px per line)
     
     # Render the interactive text area with the calculated height
