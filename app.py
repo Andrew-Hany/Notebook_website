@@ -6,6 +6,11 @@ import matplotlib.pyplot as plt
 import json
 
 import problem_solver
+from css import *
+
+# Run CSS
+css()
+
 
 def load_problems():
     with open('problems.json', 'r') as f:
