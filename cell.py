@@ -21,7 +21,7 @@ def cell_component(user_code: str, text_area_key: str) -> str:
     
     # Render the interactive text area with the calculated height
     user_code = st.text_area(
-        label="Write your code here:",
+        label="",
         value=user_code,
         height=dynamic_height,
         key=text_area_key
