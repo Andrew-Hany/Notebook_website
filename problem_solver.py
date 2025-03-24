@@ -62,7 +62,8 @@ def main():
     if st.sidebar.button("🔙 Go Back", key="go_back"):
         del st.session_state.selected_problem
         del st.session_state.solution_flag
-        del st.session_state.user_test_code
+        if "user_test_code" in st.session_state
+            del st.session_state.user_test_code
         # del st.session_state.cells
         # del st.session_state.shared_globals
 

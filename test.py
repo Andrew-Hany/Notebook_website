@@ -34,4 +34,4 @@ def right_solution(input_list):
         if x == 0 and y == 0:
             origin_count += 1
     return origin_count / trials
-print(solution([10, 100]) == right_solution([10, 100]), solution([4, 100]), right_solution([4, 100]))
+print(solution([10, 10000]) == right_solution([10, 10000]), solution([4, 10000]), right_solution([4, 10000]))
