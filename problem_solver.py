@@ -32,8 +32,8 @@ def main():
     st.title(problem["name"])
     st.markdown(problem["description"])
 
-    st.sidebar.header("Problem Description")
-    st.sidebar.markdown(problem["description"])
+    # st.sidebar.header("Problem Description")
+    # st.sidebar.markdown(problem["description"])
 
     if st.session_state.solution_flag == 1:
         st.header("Solution")
@@ -52,7 +52,7 @@ def main():
         elif passed == len(problem["test_cases"]):
             st.success(f"Passed: {passed}, Failed: {failed}")
             # st.sidebar.success("All tests passed!")
-
+        
         if st.sidebar.button("📝 Notebook", key="notebook"):
             st.session_state.sub_page = "notebook"
             st.rerun()
@@ -62,22 +62,25 @@ def main():
     if st.sidebar.button("🔙 Go Back", key="go_back"):
         del st.session_state.selected_problem
         del st.session_state.solution_flag
-        del st.session_state.cells
-        del st.session_state.shared_globals
+        del st.session_state.user_test_code
+        # del st.session_state.cells
+        # del st.session_state.shared_globals
 
         st.rerun()
                 
 def test(test_cases):
-    if 'user_solution' not in st.session_state:
-        st.session_state.user_solution = st.session_state.selected_problem["starting_code"]
 
-    user_solution_code = cell_component(st.session_state.user_solution, 'user_solution')
+    if 'user_test_code' not in st.session_state:
+        st.session_state.user_test_code = st.session_state.selected_problem["starting_code"]
+    user_solution_code = cell_component(st.session_state.user_test_code, 'user_solution')
 
     passed = 0
     failed = 0
     results = []
 
     if st.button("✅ Run Tests", key="run_tests"):
+        st.session_state.user_test_code= user_solution_code
+        
         try:
             exec(user_solution_code, st.session_state.shared_globals)
             exec(st.session_state.selected_problem["right_solution"], st.session_state.shared_globals)
@@ -85,9 +88,9 @@ def test(test_cases):
             solition_func = st.session_state.shared_globals.get("right_solution")
 
             for case in test_cases:
-                # print(func(case["input"]), solition_func(case["input"]))
-                # print(func(case["input"]))
-                # print(case)
+                print(func(case["input"]), solition_func(case["input"]))
+                print(func(case["input"]))
+                print(case)
                 try:
                     # Assuming the user-defined function is named 'solution'
                     func = st.session_state.shared_globals.get("solution")
@@ -96,11 +99,11 @@ def test(test_cases):
                     if func:
                         random.seed(42)
                         np.random.seed(42)
-                        result = func(*case["input"]) if isinstance(case["input"], list) else func(case["input"])
+                        result =  func(case["input"])
 
                         random.seed(42)
                         np.random.seed(42)
-                        right_result = solition_func(*case["input"]) if isinstance(case["input"], list) else solition_func(case["input"])
+                        right_result = solition_func(case["input"])
                         print(result, right_result)
                         if result == right_result:
                             passed += 1

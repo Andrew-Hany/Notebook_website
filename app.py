@@ -30,7 +30,7 @@ def main():
 
 
         for problem in problems:
-            col1, col2 = st.columns([3, 1])
+            col1, col2,col3 = st.columns([1,1, 1])
             with col1:
                 if st.button(problem["name"], key=problem["id"]):
                     st.session_state.selected_problem = problem
@@ -41,6 +41,14 @@ def main():
                     st.session_state.selected_problem = problem
                     st.session_state.solution_flag = 1
                     st.rerun()
+            with col3:
+                if problem["severity"] == "easy":
+                    st.success(f"easy")
+                elif problem["severity"] == "medium":
+                    st.warning(f"medium")
+                else:
+                    st.error(f"hard")
+               
 
                     # st.rerun()
 
