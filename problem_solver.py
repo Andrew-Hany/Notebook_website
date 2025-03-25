@@ -16,6 +16,8 @@ np.random.seed(42)
 def main():
     if "solution_flag" not in st.session_state:
         st.session_state.solution_flag = 0
+    if "learn" not in st.session_state:
+        st.session_state.learn = 0
     if "sub_page" not in st.session_state:
         st.session_state.sub_page = "notebook"
     if "selected_problem" not in st.session_state:
@@ -29,21 +31,26 @@ def main():
         st.session_state.shared_globals = {}
     problem = st.session_state.selected_problem
 
-    st.title(problem["name"])
-    st.markdown(problem["description"])
+    st.sidebar.markdown(problem["description"])
 
     # st.sidebar.header("Problem Description")
     # st.sidebar.markdown(problem["description"])
-
     if st.session_state.solution_flag == 1:
         st.header("Solution")
-        st.code(problem["right_solution"])
+        st.code(problem["right_solution"], language="python")
+    elif st.session_state.solution_flag == 2:
+        # st.header("Solution")
+        st.markdown(problem["step_by_step_solution"])
+    elif st.session_state.learn == 1:
+        st.markdown(problem["learn_topic_beforehand"])
     elif st.session_state.sub_page == "notebook":
+        st.header("Notebook")
         Notebook()
         if st.sidebar.button("🔍 Run Tests", key="run_test_page"):
             st.session_state.sub_page = "testing"
             st.rerun()
     elif st.session_state.sub_page == "testing":
+        st.header("Testing")
         passed, failed, results = test( problem["test_cases"])
 
         if failed> 0:
@@ -62,6 +69,8 @@ def main():
     if st.sidebar.button("🔙 Go Back", key="go_back"):
         del st.session_state.selected_problem
         del st.session_state.solution_flag
+        del st.session_state.learn
+
         if "user_test_code" in st.session_state:
             del st.session_state.user_test_code
         # del st.session_state.cells

@@ -12,7 +12,7 @@ from css import *
 css()
 
 
-def load_problems():
+def load_courses():
     with open('problems.json', 'r') as f:
         return json.load(f)
 
@@ -26,28 +26,38 @@ def main():
     if problem_flag == 0:
 
         st.title("Problem List")
-        problems = load_problems()
+        courses = load_courses()
 
-
-        for problem in problems:
-            col1, col2,col3 = st.columns([1,1, 1])
-            with col1:
-                if st.button(problem["name"], key=problem["id"]):
-                    st.session_state.selected_problem = problem
-                    st.rerun()
-
-            with col2:
-                if st.button("Solution", key=f'solution_{problem["id"]}'):
-                    st.session_state.selected_problem = problem
-                    st.session_state.solution_flag = 1
-                    st.rerun()
-            with col3:
-                if problem["severity"] == "easy":
-                    st.success(f"easy")
-                elif problem["severity"] == "medium":
-                    st.warning(f"medium")
-                else:
-                    st.error(f"hard")
+        for course_name, problems in courses.items():
+            st.info(course_name)
+            for problem in problems:
+                col1,col2,col3,col4,col5 = st.columns([2,2,1,1, 1.5])
+                with col1:
+                    if st.button(problem["name"], key=problem["id"]):
+                        st.session_state.selected_problem = problem
+                        st.rerun()
+                with col3:
+                    if st.button("solution", key=f'solution_{problem["id"]}'):
+                        st.session_state.selected_problem = problem
+                        st.session_state.solution_flag = 1
+                        st.rerun()
+                with col2: 
+                    if st.button("step by step solution", key=f'step_by_step_solution_{problem["id"]}'):
+                        st.session_state.selected_problem = problem
+                        st.session_state.solution_flag = 2
+                        st.rerun()
+                with col4:
+                    if st.button("learn", key=f'learn_topic_beforehand_{problem["id"]}'):
+                        st.session_state.selected_problem = problem
+                        st.session_state.learn = 1
+                        st.rerun()
+                with col5:
+                    if problem["severity"] == "easy":
+                        st.success(f"easy")
+                    elif problem["severity"] == "medium":
+                        st.warning(f"medium")
+                    else:
+                        st.error(f"hard")
                
 
                     # st.rerun()

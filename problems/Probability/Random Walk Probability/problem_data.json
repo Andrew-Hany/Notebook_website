@@ -1,0 +1,16 @@
+{
+    "name": "Random Walk",
+    "problem_id": 5,
+    "module_name": "Probability",
+    "testcases": [
+        {
+            "input": [4, 10000],
+            "expected_output": 0.25
+        },
+        {
+            "input": [100, 10000],
+            "expected_output": 0.1
+        }
+    ],
+    "severity": "easy"
+}
