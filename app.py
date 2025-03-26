@@ -15,13 +15,13 @@ css()
 
 
 def load_courses():
-    if 'load_course_flag' not in st.session_state:
-        base_path = 'problems'
-        output_file = 'problems.json'
-        problems_data = convert_problems_to_json(base_path)
-        save_json(problems_data, output_file)
-        st.session_state.load_course_flag = 1
-        print(f"Problems data saved to {output_file}")
+    # if 'load_course_flag' not in st.session_state:
+    #     base_path = 'problems'
+    #     output_file = 'problems.json'
+    #     problems_data = convert_problems_to_json(base_path)
+    #     save_json(problems_data, output_file)
+    #     st.session_state.load_course_flag = 1
+    #     print(f"Problems data saved to {output_file}")
     with open('problems.json', 'r') as f:
         return json.load(f)
 
