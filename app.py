@@ -41,6 +41,7 @@ def main():
             st.info(course_name)
             for topic_name, problems in topics.items():
                 # if len(problems) > 0:
+                print(course_name,topic_name)
                 st.warning(topic_name)
                 for problem in problems:
                     col1,col2,col3,col4,col5 = st.columns([2,2,1,1, 1.5])
