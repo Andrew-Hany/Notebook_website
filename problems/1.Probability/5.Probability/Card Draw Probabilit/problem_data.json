@@ -1,0 +1,16 @@
+{
+    "name": "Card Draw",
+    "problem_id": 3,
+    "module_name": "Probability",
+    "testcases": [
+        {
+            "input": 52,
+            "expected_output": 0.07692307692307693
+        },
+        {
+            "input": 520,
+            "expected_output": 0.07692307692307693
+        }
+    ],
+    "severity": "easy"
+}

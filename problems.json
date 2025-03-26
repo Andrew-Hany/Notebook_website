@@ -1,109 +1,134 @@
 {
-    "Probability": [
-        {
-            "right_solution": "def right_solution(n):\n    heads_count = 0\n    for _ in range(n):\n        if random.choice(['heads', 'tails']) == 'heads':\n            heads_count += 1\n    return heads_count / n",
-            "starting_code": "# import your libraries here\nimport random\n\n# Write your solution under solution(n):\n# You can create as many functions as you want and call them inside solution(n):  \ndef solution(n):\n\n    pass",
-            "description": "# Coin Toss Probability\n\n## Description\nWrite a function that simulates tossing a fair coin `n` times and returns the probability of getting heads.\n\n## Test Cases\n- **Input:** 100 \n  **Expected Output:** 0.5\n- **Input:** 1000\n  **Expected Output:** 0.5",
-            "step_by_step_solution": "# Step-by-Step Solution for Coin Toss Probability\n\n## Approach\n1. **Understand the Problem:**\n   - We need to simulate tossing a fair coin `n` times.\n   - We need to calculate the probability of getting heads.\n\n2. **Plan the Solution:**\n   - Initialize a counter for heads.\n   - Loop `n` times to simulate each coin toss.\n   - Use `random.choice` to simulate a fair coin toss.\n   - If the result is heads, increment the counter.\n   - After the loop, calculate the probability by dividing the heads count by `n`.\n\n3. **Implement the Solution:**\n   - Write the code to perform the above steps.\n\n## Practical Example\n- If we toss a coin 100 times, we expect around 50 heads and 50 tails.\n- By simulating this process, we can estimate the probability of getting heads.",
-            "test_cases": [
-                {
-                    "input": 100,
-                    "expected_output": 0.5
-                },
-                {
-                    "input": 1000,
-                    "expected_output": 0.5
-                }
-            ],
-            "severity": "easy",
-            "id": 1,
-            "name": "Coin Toss"
-        },
-        {
-            "right_solution": "def right_solution(n):\n    six_count = 0\n    for _ in range(n):\n        if random.randint(1, 6) == 6:\n            six_count += 1\n    return six_count / n",
-            "starting_code": "# import your libraries here\nimport random\n\n# Write your solution under solution(n):\n# You can create as many functions as you want and call them inside solution(n):  \ndef solution(n):\n\n    pass",
-            "description": "# Dice Roll Probability\n\n## Description\nWrite a function that simulates rolling a fair six-sided die `n` times and returns the probability of rolling a six.\n\n## Test Cases\n- **Input:** 60\n  **Expected Output:** 0.16666666666666666\n- **Input:** 600\n  **Expected Output:** 0.16666666666666666",
-            "step_by_step_solution": "# Step-by-Step Solution for Dice Roll Probability\n\n## Approach\n1. **Understand the Problem:**\n   - We need to simulate rolling a fair six-sided die `n` times.\n   - We need to calculate the probability of rolling a six.\n\n2. **Plan the Solution:**\n   - Initialize a counter for sixes.\n   - Loop `n` times to simulate each die roll.\n   - Use `random.randint(1, 6)` to simulate a fair die roll.\n   - If the result is six, increment the counter.\n   - After the loop, calculate the probability by dividing the six count by `n`.\n\n3. **Implement the Solution:**\n   - Write the code to perform the above steps.\n\n## Practical Example\n- If we roll a die 60 times, we expect around 10 rolls to be a six.\n- By simulating this process, we can estimate the probability of rolling a six.",
-            "learn_topic_beforehand": "# Learning Topic: Simulation\n\n## Concept of Simulation\nSimulation is a technique used to model the behavior of a system using a computer program. It allows us to study and analyze the performance of a system without having to experiment with the real system.\n\n## Example: Dice Roll Simulation\n- A fair six-sided die has an equal probability of landing on any of its six faces, which is \\( \\frac{1}{6} \\).\n- By simulating multiple die rolls, we can estimate the probability of rolling a six.\n- This involves using random number generation to mimic the randomness of a real die roll.\n\n## Theoretical Concepts\n- **Probability:** The likelihood of an event occurring, expressed as a number between 0 and 1.\n- **Randomness:** The lack of pattern or predictability in events.\n- **Law of Large Numbers:** As the number of trials increases, the experimental probability approaches the theoretical probability.",
-            "test_cases": [
-                {
-                    "input": 60,
-                    "expected_output": 0.16666666666666666
-                },
-                {
-                    "input": 600,
-                    "expected_output": 0.16666666666666666
-                }
-            ],
-            "severity": "easy",
-            "id": 2,
-            "name": "Dice Roll"
-        },
-        {
-            "right_solution": "def right_solution(n):\n    ace_count = 0\n    for _ in range(n):\n        if random.choice(['Ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King']) == 'Ace':\n            ace_count += 1\n    return ace_count / n\n\ndef right_solution2(n):\n    ace_count = 0\n    for _ in range(n):\n        if random.randint(1, 13) == 1:\n            ace_count += 1\n    return ace_count / n",
-            "starting_code": "# import your libraries here\nimport random\n\n# Write your solution under solution(n):\n# You can create as many functions as you want and call them inside solution(n):  \ndef solution(n):\n\n    pass",
-            "description": "# Card Draw Probability\n\n## Description\nWrite a function that simulates drawing a card from a standard 52-card deck `n` times and returns the probability of drawing an Ace.\n\n## Test Cases\n- **Input:** 52\n  **Expected Output:** 0.07692307692307693\n- **Input:** 520\n  **Expected Output:** 0.07692307692307693",
-            "step_by_step_solution": "# Step-by-Step Solution for Card Draw Probability\n\n## Approach\n1. **Understand the Problem:**\n   - We need to simulate drawing a card from a standard 52-card deck `n` times.\n   - We need to calculate the probability of drawing an Ace.\n\n2. **Plan the Solution:**\n   - Initialize a counter for Aces.\n   - Loop `n` times to simulate each card draw.\n   - Use `random.choice` to simulate drawing a card from the deck.\n   - If the result is an Ace, increment the counter.\n   - After the loop, calculate the probability by dividing the Ace count by `n`.\n\n3. **Implement the Solution:**\n   - Write the code to perform the above steps.\n\n## Practical Example\n- If we draw a card 52 times, we expect around 4 draws to be an Ace.\n- By simulating this process, we can estimate the probability of drawing an Ace.",
-            "learn_topic_beforehand": "# Learning Topic: Simulation\n\n## Concept of Simulation\nSimulation is a technique used to model the behavior of a system using a computer program. It allows us to study and analyze the performance of a system without having to experiment with the real system.\n\n## Example: Card Draw Simulation\n- A standard 52-card deck has 4 Aces.\n- By simulating multiple card draws, we can estimate the probability of drawing an Ace.\n- This involves using random number generation to mimic the randomness of a real card draw.\n\n## Theoretical Concepts\n- **Probability:** The likelihood of an event occurring, expressed as a number between 0 and 1.\n- **Randomness:** The lack of pattern or predictability in events.\n- **Law of Large Numbers:** As the number of trials increases, the experimental probability approaches the theoretical probability.",
-            "test_cases": [
-                {
-                    "input": 52,
-                    "expected_output": 0.07692307692307693
-                },
-                {
-                    "input": 520,
-                    "expected_output": 0.07692307692307693
-                }
-            ],
-            "severity": "easy",
-            "id": 3,
-            "name": "Card Draw"
-        },
-        {
-            "right_solution": "def right_solution(n):\n    red_count = 0\n    for _ in range(n):\n        if random.choice(['red', 'red', 'red', 'blue', 'blue', 'green']) == 'red':\n            red_count += 1\n    return red_count / n",
-            "starting_code": "# import your libraries here\nimport random\n\n# Write your solution under solution(n):\n# You can create as many functions as you want and call them inside solution(n):  \ndef solution(n):\n\n    pass",
-            "description": "# Marble Draw Probability\n\n## Description\nWrite a function that simulates drawing a marble from a bag containing 3 red, 2 blue, and 1 green marble `n` times and returns the probability of drawing a red marble.\n\n## Test Cases\n- **Input:** 60\n  **Expected Output:** 0.5\n- **Input:** 600\n  **Expected Output:** 0.5",
-            "step_by_step_solution": "# Step-by-Step Solution for Marble Draw Probability\n\n## Approach\n1. **Understand the Problem:**\n   - We need to simulate drawing a marble from a bag containing 3 red, 2 blue, and 1 green marble `n` times.\n   - We need to calculate the probability of drawing a red marble.\n\n2. **Plan the Solution:**\n   - Initialize a counter for red marbles.\n   - Loop `n` times to simulate each marble draw.\n   - Use `random.choice` to simulate drawing a marble from the bag.\n   - If the result is a red marble, increment the counter.\n   - After the loop, calculate the probability by dividing the red marble count by `n`.\n\n3. **Implement the Solution:**\n   - Write the code to perform the above steps.\n\n## Practical Example\n- If we draw a marble 60 times, we expect around 30 draws to be a red marble.\n- By simulating this process, we can estimate the probability of drawing a red marble.",
-            "learn_topic_beforehand": "# Learning Topic: Simulation\n\n## Concept of Simulation\nSimulation is a technique used to model the behavior of a system using a computer program. It allows us to study and analyze the performance of a system without having to experiment with the real system.\n\n## Example: Marble Draw Simulation\n- A bag contains 3 red, 2 blue, and 1 green marble.\n- By simulating multiple marble draws, we can estimate the probability of drawing a red marble.\n- This involves using random number generation to mimic the randomness of a real marble draw.\n\n## Theoretical Concepts\n- **Probability:** The likelihood of an event occurring, expressed as a number between 0 and 1.\n- **Randomness:** The lack of pattern or predictability in events.\n- **Law of Large Numbers:** As the number of trials increases, the experimental probability approaches the theoretical probability.",
-            "test_cases": [
-                {
-                    "input": 60,
-                    "expected_output": 0.5
-                },
-                {
-                    "input": 600,
-                    "expected_output": 0.5
-                }
-            ],
-            "severity": "easy",
-            "id": 4,
-            "name": "Marble Draw"
-        },
-        {
-            "right_solution": "def right_solution(input_list):\n    steps, trials = input_list\n    origin_count = 0\n    for _ in range(trials):\n        x, y = 0, 0\n        for _ in range(steps):\n            step = random.choice(['up', 'down', 'left', 'right'])\n            if step == 'up':\n                y += 1\n            elif step == 'down':\n                y -= 1\n            elif step == 'left':\n                x -= 1\n            elif step == 'right':\n                x += 1\n        if x == 0 and y == 0:\n            origin_count += 1\n    return origin_count / trials",
-            "starting_code": "# import your libraries here\nimport random\n\n# Write your solution under solution(n):\n# You can create as many functions as you want and call them inside solution(n):  \ndef solution(input_list):\n    steps, trials = input_list\n    pass",
-            "description": "# Random Walk Probability\n\n## Description\nWrite a function that simulates a random walk on a 2D grid starting from the origin (0, 0). The function should simulate `n` steps, where each step is randomly chosen from the four possible directions: up, down, left, or right. After `n` steps, the function should determine if the walker is back at the origin (0, 0). The function should repeat this simulation for a specified number of trials to estimate the probability of the walker being at the origin after `n` steps. The function should return this estimated probability.\n\n## Test Cases\n- **Input:** [4, 10000]\n  **Expected Output:** 0.25\n- **Input:** [100, 10000]\n  **Expected Output:** 0.1",
-            "step_by_step_solution": "# Step-by-Step Solution for Random Walk Probability\n\n## Approach\n1. **Understand the Problem:**\n   - We need to simulate a random walk on a 2D grid starting from the origin (0, 0).\n   - We need to simulate `n` steps, where each step is randomly chosen from the four possible directions: up, down, left, or right.\n   - After `n` steps, we need to determine if the walker is back at the origin (0, 0).\n   - We need to repeat this simulation for a specified number of trials to estimate the probability of the walker being at the origin after `n` steps.\n\n2. **Plan the Solution:**\n   - Initialize a counter for the number of times the walker returns to the origin.\n   - Loop through the number of trials.\n   - For each trial, initialize the walker's position at the origin (0, 0).\n   - Loop through the number of steps.\n   - Randomly choose a direction and update the walker's position accordingly.\n   - After `n` steps, check if the walker is back at the origin.\n   - If the walker is back at the origin, increment the counter.\n   - After all trials, calculate the probability by dividing the counter by the number of trials.\n\n3. **Implement the Solution:**\n   - Write the code to perform the above steps.\n\n## Practical Example\n- If we simulate a random walk with 4 steps and 10000 trials, we expect the walker to return to the origin approximately 25% of the time.\n- By simulating this process, we can estimate the probability of the walker being at the origin after `n` steps.",
-            "learn_topic_beforehand": "# Learning Topic: Simulation\n\n## Concept of Simulation\nSimulation is a technique used to model the behavior of a system using a computer program. It allows us to study and analyze the performance of a system without having to experiment with the real system.\n\n## Example: Random Walk Simulation\n- A random walk is a mathematical model that describes a path consisting of a sequence of random steps.\n- In a 2D grid, each step can be in one of four directions: up, down, left, or right.\n- By simulating multiple random walks, we can estimate the probability of the walker being at the origin after `n` steps.\n\n## Theoretical Concepts\n- **Probability:** The likelihood of an event occurring, expressed as a number between 0 and 1.\n- **Randomness:** The lack of pattern or predictability in events.\n- **Law of Large Numbers:** As the number of trials increases, the experimental probability approaches the theoretical probability.",
-            "test_cases": [
-                {
-                    "input": [
-                        4,
-                        10000
-                    ],
-                    "expected_output": 0.25
-                },
-                {
-                    "input": [
-                        100,
-                        10000
-                    ],
-                    "expected_output": 0.1
-                }
-            ],
-            "severity": "easy",
-            "id": 5,
-            "name": "Random Walk"
-        }
-    ]
+    "1.Probability": {
+        "1.Vienn Diagram": [],
+        "2.Cardinalities": [],
+        "3.Random Experiments": [],
+        "4.Simulations": [],
+        "5.Probability": [
+            {
+                "right_solution": "def right_solution(n):\n    heads_count = 0\n    for _ in range(n):\n        if random.choice(['heads', 'tails']) == 'heads':\n            heads_count += 1\n    return heads_count / n",
+                "starting_code": "# import your libraries here\nimport random\n\n# Write your solution under solution(n):\n# You can create as many functions as you want and call them inside solution(n):  \ndef solution(n):\n\n    pass",
+                "description": "# Coin Toss Probability\n\n## Description\nWrite a function that simulates tossing a fair coin `n` times and returns the probability of getting heads.\n\n## Test Cases\n- **Input:** 100 \n  **Expected Output:** 0.5\n- **Input:** 1000\n  **Expected Output:** 0.5",
+                "step_by_step_solution": "# Step-by-Step Solution for Coin Toss Probability\n\n## Approach\n1. **Understand the Problem:**\n   - We need to simulate tossing a fair coin `n` times.\n   - We need to calculate the probability of getting heads.\n\n2. **Plan the Solution:**\n   - Initialize a counter for heads.\n   - Loop `n` times to simulate each coin toss.\n   - Use `random.choice` to simulate a fair coin toss.\n   - If the result is heads, increment the counter.\n   - After the loop, calculate the probability by dividing the heads count by `n`.\n\n3. **Implement the Solution:**\n   - Write the code to perform the above steps.\n\n## Practical Example\n- If we toss a coin 100 times, we expect around 50 heads and 50 tails.\n- By simulating this process, we can estimate the probability of getting heads.",
+                "test_cases": [
+                    {
+                        "input": 100,
+                        "expected_output": 0.5
+                    },
+                    {
+                        "input": 1000,
+                        "expected_output": 0.5
+                    }
+                ],
+                "severity": "easy",
+                "id": 1,
+                "name": "Coin Toss"
+            },
+            {
+                "right_solution": "def right_solution(n):\n    six_count = 0\n    for _ in range(n):\n        if random.randint(1, 6) == 6:\n            six_count += 1\n    return six_count / n",
+                "starting_code": "# import your libraries here\nimport random\n\n# Write your solution under solution(n):\n# You can create as many functions as you want and call them inside solution(n):  \ndef solution(n):\n\n    pass",
+                "description": "# Dice Roll Probability\n\n## Description\nWrite a function that simulates rolling a fair six-sided die `n` times and returns the probability of rolling a six.\n\n## Test Cases\n- **Input:** 60\n  **Expected Output:** 0.16666666666666666\n- **Input:** 600\n  **Expected Output:** 0.16666666666666666",
+                "step_by_step_solution": "# Step-by-Step Solution for Dice Roll Probability\n\n## Approach\n1. **Understand the Problem:**\n   - We need to simulate rolling a fair six-sided die `n` times.\n   - We need to calculate the probability of rolling a six.\n\n2. **Plan the Solution:**\n   - Initialize a counter for sixes.\n   - Loop `n` times to simulate each die roll.\n   - Use `random.randint(1, 6)` to simulate a fair die roll.\n   - If the result is six, increment the counter.\n   - After the loop, calculate the probability by dividing the six count by `n`.\n\n3. **Implement the Solution:**\n   - Write the code to perform the above steps.\n\n## Practical Example\n- If we roll a die 60 times, we expect around 10 rolls to be a six.\n- By simulating this process, we can estimate the probability of rolling a six.",
+                "learn_topic_beforehand": "# Learning Topic: Simulation\n\n## Concept of Simulation\nSimulation is a technique used to model the behavior of a system using a computer program. It allows us to study and analyze the performance of a system without having to experiment with the real system.\n\n## Example: Dice Roll Simulation\n- A fair six-sided die has an equal probability of landing on any of its six faces, which is \\( \\frac{1}{6} \\).\n- By simulating multiple die rolls, we can estimate the probability of rolling a six.\n- This involves using random number generation to mimic the randomness of a real die roll.\n\n## Theoretical Concepts\n- **Probability:** The likelihood of an event occurring, expressed as a number between 0 and 1.\n- **Randomness:** The lack of pattern or predictability in events.\n- **Law of Large Numbers:** As the number of trials increases, the experimental probability approaches the theoretical probability.",
+                "test_cases": [
+                    {
+                        "input": 60,
+                        "expected_output": 0.16666666666666666
+                    },
+                    {
+                        "input": 600,
+                        "expected_output": 0.16666666666666666
+                    }
+                ],
+                "severity": "easy",
+                "id": 2,
+                "name": "Dice Roll"
+            },
+            {
+                "right_solution": "def right_solution(n):\n    ace_count = 0\n    for _ in range(n):\n        if random.choice(['Ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King']) == 'Ace':\n            ace_count += 1\n    return ace_count / n\n\ndef right_solution2(n):\n    ace_count = 0\n    for _ in range(n):\n        if random.randint(1, 13) == 1:\n            ace_count += 1\n    return ace_count / n",
+                "starting_code": "# import your libraries here\nimport random\n\n# Write your solution under solution(n):\n# You can create as many functions as you want and call them inside solution(n):  \ndef solution(n):\n\n    pass",
+                "description": "# Card Draw Probability\n\n## Description\nWrite a function that simulates drawing a card from a standard 52-card deck `n` times and returns the probability of drawing an Ace.\n\n## Test Cases\n- **Input:** 52\n  **Expected Output:** 0.07692307692307693\n- **Input:** 520\n  **Expected Output:** 0.07692307692307693",
+                "step_by_step_solution": "# Step-by-Step Solution for Card Draw Probability\n\n## Approach\n1. **Understand the Problem:**\n   - We need to simulate drawing a card from a standard 52-card deck `n` times.\n   - We need to calculate the probability of drawing an Ace.\n\n2. **Plan the Solution:**\n   - Initialize a counter for Aces.\n   - Loop `n` times to simulate each card draw.\n   - Use `random.choice` to simulate drawing a card from the deck.\n   - If the result is an Ace, increment the counter.\n   - After the loop, calculate the probability by dividing the Ace count by `n`.\n\n3. **Implement the Solution:**\n   - Write the code to perform the above steps.\n\n## Practical Example\n- If we draw a card 52 times, we expect around 4 draws to be an Ace.\n- By simulating this process, we can estimate the probability of drawing an Ace.",
+                "learn_topic_beforehand": "# Learning Topic: Simulation\n\n## Concept of Simulation\nSimulation is a technique used to model the behavior of a system using a computer program. It allows us to study and analyze the performance of a system without having to experiment with the real system.\n\n## Example: Card Draw Simulation\n- A standard 52-card deck has 4 Aces.\n- By simulating multiple card draws, we can estimate the probability of drawing an Ace.\n- This involves using random number generation to mimic the randomness of a real card draw.\n\n## Theoretical Concepts\n- **Probability:** The likelihood of an event occurring, expressed as a number between 0 and 1.\n- **Randomness:** The lack of pattern or predictability in events.\n- **Law of Large Numbers:** As the number of trials increases, the experimental probability approaches the theoretical probability.",
+                "test_cases": [
+                    {
+                        "input": 52,
+                        "expected_output": 0.07692307692307693
+                    },
+                    {
+                        "input": 520,
+                        "expected_output": 0.07692307692307693
+                    }
+                ],
+                "severity": "easy",
+                "id": 3,
+                "name": "Card Draw"
+            },
+            {
+                "right_solution": "def right_solution(n):\n    red_count = 0\n    for _ in range(n):\n        if random.choice(['red', 'red', 'red', 'blue', 'blue', 'green']) == 'red':\n            red_count += 1\n    return red_count / n",
+                "starting_code": "# import your libraries here\nimport random\n\n# Write your solution under solution(n):\n# You can create as many functions as you want and call them inside solution(n):  \ndef solution(n):\n\n    pass",
+                "description": "# Marble Draw Probability\n\n## Description\nWrite a function that simulates drawing a marble from a bag containing 3 red, 2 blue, and 1 green marble `n` times and returns the probability of drawing a red marble.\n\n## Test Cases\n- **Input:** 60\n  **Expected Output:** 0.5\n- **Input:** 600\n  **Expected Output:** 0.5",
+                "step_by_step_solution": "# Step-by-Step Solution for Marble Draw Probability\n\n## Approach\n1. **Understand the Problem:**\n   - We need to simulate drawing a marble from a bag containing 3 red, 2 blue, and 1 green marble `n` times.\n   - We need to calculate the probability of drawing a red marble.\n\n2. **Plan the Solution:**\n   - Initialize a counter for red marbles.\n   - Loop `n` times to simulate each marble draw.\n   - Use `random.choice` to simulate drawing a marble from the bag.\n   - If the result is a red marble, increment the counter.\n   - After the loop, calculate the probability by dividing the red marble count by `n`.\n\n3. **Implement the Solution:**\n   - Write the code to perform the above steps.\n\n## Practical Example\n- If we draw a marble 60 times, we expect around 30 draws to be a red marble.\n- By simulating this process, we can estimate the probability of drawing a red marble.",
+                "learn_topic_beforehand": "# Learning Topic: Simulation\n\n## Concept of Simulation\nSimulation is a technique used to model the behavior of a system using a computer program. It allows us to study and analyze the performance of a system without having to experiment with the real system.\n\n## Example: Marble Draw Simulation\n- A bag contains 3 red, 2 blue, and 1 green marble.\n- By simulating multiple marble draws, we can estimate the probability of drawing a red marble.\n- This involves using random number generation to mimic the randomness of a real marble draw.\n\n## Theoretical Concepts\n- **Probability:** The likelihood of an event occurring, expressed as a number between 0 and 1.\n- **Randomness:** The lack of pattern or predictability in events.\n- **Law of Large Numbers:** As the number of trials increases, the experimental probability approaches the theoretical probability.",
+                "test_cases": [
+                    {
+                        "input": 60,
+                        "expected_output": 0.5
+                    },
+                    {
+                        "input": 600,
+                        "expected_output": 0.5
+                    }
+                ],
+                "severity": "easy",
+                "id": 4,
+                "name": "Marble Draw"
+            },
+            {
+                "right_solution": "def right_solution(input_list):\n    steps, trials = input_list\n    origin_count = 0\n    for _ in range(trials):\n        x, y = 0, 0\n        for _ in range(steps):\n            step = random.choice(['up', 'down', 'left', 'right'])\n            if step == 'up':\n                y += 1\n            elif step == 'down':\n                y -= 1\n            elif step == 'left':\n                x -= 1\n            elif step == 'right':\n                x += 1\n        if x == 0 and y == 0:\n            origin_count += 1\n    return origin_count / trials",
+                "starting_code": "# import your libraries here\nimport random\n\n# Write your solution under solution(n):\n# You can create as many functions as you want and call them inside solution(n):  \ndef solution(input_list):\n    steps, trials = input_list\n    pass",
+                "description": "# Random Walk Probability\n\n## Description\nWrite a function that simulates a random walk on a 2D grid starting from the origin (0, 0). The function should simulate `n` steps, where each step is randomly chosen from the four possible directions: up, down, left, or right. After `n` steps, the function should determine if the walker is back at the origin (0, 0). The function should repeat this simulation for a specified number of trials to estimate the probability of the walker being at the origin after `n` steps. The function should return this estimated probability.\n\n## Test Cases\n- **Input:** [4, 10000]\n  **Expected Output:** 0.25\n- **Input:** [100, 10000]\n  **Expected Output:** 0.1",
+                "step_by_step_solution": "# Step-by-Step Solution for Random Walk Probability\n\n## Approach\n1. **Understand the Problem:**\n   - We need to simulate a random walk on a 2D grid starting from the origin (0, 0).\n   - We need to simulate `n` steps, where each step is randomly chosen from the four possible directions: up, down, left, or right.\n   - After `n` steps, we need to determine if the walker is back at the origin (0, 0).\n   - We need to repeat this simulation for a specified number of trials to estimate the probability of the walker being at the origin after `n` steps.\n\n2. **Plan the Solution:**\n   - Initialize a counter for the number of times the walker returns to the origin.\n   - Loop through the number of trials.\n   - For each trial, initialize the walker's position at the origin (0, 0).\n   - Loop through the number of steps.\n   - Randomly choose a direction and update the walker's position accordingly.\n   - After `n` steps, check if the walker is back at the origin.\n   - If the walker is back at the origin, increment the counter.\n   - After all trials, calculate the probability by dividing the counter by the number of trials.\n\n3. **Implement the Solution:**\n   - Write the code to perform the above steps.\n\n## Practical Example\n- If we simulate a random walk with 4 steps and 10000 trials, we expect the walker to return to the origin approximately 25% of the time.\n- By simulating this process, we can estimate the probability of the walker being at the origin after `n` steps.",
+                "learn_topic_beforehand": "# Learning Topic: Simulation\n\n## Concept of Simulation\nSimulation is a technique used to model the behavior of a system using a computer program. It allows us to study and analyze the performance of a system without having to experiment with the real system.\n\n## Example: Random Walk Simulation\n- A random walk is a mathematical model that describes a path consisting of a sequence of random steps.\n- In a 2D grid, each step can be in one of four directions: up, down, left, or right.\n- By simulating multiple random walks, we can estimate the probability of the walker being at the origin after `n` steps.\n\n## Theoretical Concepts\n- **Probability:** The likelihood of an event occurring, expressed as a number between 0 and 1.\n- **Randomness:** The lack of pattern or predictability in events.\n- **Law of Large Numbers:** As the number of trials increases, the experimental probability approaches the theoretical probability.",
+                "test_cases": [
+                    {
+                        "input": [
+                            4,
+                            10000
+                        ],
+                        "expected_output": 0.25
+                    },
+                    {
+                        "input": [
+                            100,
+                            10000
+                        ],
+                        "expected_output": 0.1
+                    }
+                ],
+                "severity": "easy",
+                "id": 5,
+                "name": "Random Walk"
+            }
+        ],
+        "6.Conditional Probability": [],
+        "7.Combinatorics & Counting": [],
+        "8.Discrete Random Variables": [],
+        "9.Continous Random Variables": [],
+        "10.Joint Distributions": [],
+        "11.Limit Theorems and Convergence of Random Variables": [],
+        "12.Introduction to Random Processes": [],
+        "13.Some Important Random Processes": []
+    },
+    "2.Statistics": {
+        "1.Exploratory Data Analysis": [],
+        "2.Data and Sampling Distributions": [],
+        "3.Statistical Experiments and Significance Testing": [],
+        "4.Statistical Inference I (Classical Methods)": [],
+        "5.Statistical Inference II (Bayesian Inference)": [],
+        "6.Regression Analysis": [],
+        "7. Time Series Analysis": [],
+        "8. Multivariate Analysis": []
+    },
+    "3.Machine Learning": {}
 }
