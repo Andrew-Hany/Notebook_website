@@ -41,12 +41,11 @@ def main():
             st.info(course_name)
             for topic_name, problems in topics.items():
                 col1, col2 = st.columns([9,1])
-                print(topic_name)
                 with col1:
                     st.warning(topic_name)
                 with col2:
                     st.button("learn", key=topic_name)
-                    
+                print(topic_name,course_name)
                 for problem in problems:
                     col1,col2,col3,col4,col5 = st.columns([2,2,1,1, 1.5])
                     with col1:
