@@ -37,21 +37,30 @@ def convert_problem_to_json(problem_path):
         right_solution, starting_code = extract_solutions(file_content)
         problem_data['right_solution'] = right_solution
         problem_data['starting_code'] = starting_code
+    else:
+        problem_data['right_solution'] = ""
+        problem_data['starting_code'] = ""
     
     # Read problem_statement.md
     problem_statement_path = os.path.join(problem_path, 'problem_statement.md')
     if os.path.exists(problem_statement_path):
         problem_data['description'] = read_file(problem_statement_path)
+    else:
+        problem_data['description'] = ""
     
     # Read step_by_step_solution.md
     step_by_step_solution_path = os.path.join(problem_path, 'step_by_step_solution.md')
     if os.path.exists(step_by_step_solution_path):
         problem_data['step_by_step_solution'] = read_file(step_by_step_solution_path)
+    else:    
+        problem_data['step_by_step_solution'] = ""
     
     # Read learn_topic_beforehand.md
     learn_topic_beforehand_path = os.path.join(problem_path, 'learn_topic_beforehand.md')
     if os.path.exists(learn_topic_beforehand_path):
         problem_data['learn_topic_beforehand'] = read_file(learn_topic_beforehand_path)
+    else:
+        problem_data['learn_topic_beforehand'] = ""
 
     problem_data_json_path = os.path.join(problem_path, 'problem_data.json')
     if os.path.exists(problem_data_json_path):
@@ -61,6 +70,11 @@ def convert_problem_to_json(problem_path):
             problem_data['severity'] = problem_data_json['severity']
             problem_data['id'] = problem_data_json['problem_id']
             problem_data['name'] = problem_data_json['name'].title()
+    else:
+        problem_data['test_cases'] = []
+        problem_data['severity'] = ""
+        problem_data['id'] = 0
+        problem_data['name'] = ""
     
     return problem_data
 
