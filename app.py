@@ -5,7 +5,7 @@ import subprocess
 import matplotlib.pyplot as plt
 import json
 
-from problem_solver import *
+import problem_solver
 
 from convert_problems_to_json import *
 from css import *
